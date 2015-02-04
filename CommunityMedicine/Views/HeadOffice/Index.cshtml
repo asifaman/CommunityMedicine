@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Head Office Activity";
+}
+
+<h2>Head Office Activity</h2>
+
+
+<div class="jumbotron">
+    <h2>Welcome To Community Medicine Service</h2><br/>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            
+            <li class="btn btn-default">@Html.ActionLink("Medicine Entry Form", "Medicine", "Headoffice")</li>
+            <li class="btn btn-default">@Html.ActionLink("Disease Entry Form", "Disease", "Headoffice")</li>
+            <li class="btn btn-default">@Html.ActionLink("Create New Center", "NewCenter", "Headoffice")</li>
+            <li class="btn btn-default">@Html.ActionLink("Medicine Send To Center", "SendMedicine", "Headoffice") </li>
+</ul>
+    </div>
+</div>

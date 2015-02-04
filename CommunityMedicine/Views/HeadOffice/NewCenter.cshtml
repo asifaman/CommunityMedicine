@@ -1,0 +1,82 @@
+﻿@using System.Configuration
+@using System.Data.Entity
+@using System.Data.SqlClient
+@using CommunityMedicine.Models
+@model CommunityMedicine.Models.NewCenter
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thana</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CenterName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CenterName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CenterName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DistrictId, "DistrictId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("DistrictId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Thananame" class="col-sm-2 control-label">Thana Name</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="Thananame" name="Thananame"></select>
+             
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("#DistrictId").change(function () {
+                var optionSelected = $(this).find("option:selected");
+                var myData = { DistrictId: optionSelected.val() };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("FindThana", "HeadOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(myData),
+                    dataType: "json",
+                    success: function(data) {
+                        $('#Thananame').empty().append('<option  value="">Select Thana</option>');
+                        $.each(data, function(index, value) {
+                            $('#Thananame').append($('<option/>', {
+                                value: value.ThanaId,
+                                text: value.ThanaName
+                            }));
+                        });
+                    },
+                });
+            });
+        });
+    </script>
+}
+
+            

@@ -1,0 +1,31 @@
+﻿@model List<CommunityMedicine.Models.NewCenter>
+@{
+    ViewBag.Title = "PDF";
+    Layout = null;
+}
+
+<h2>PDF</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Html List in PDF</h2>
+    <table width="100%">
+        <tr>
+            <td>Center Name</td>
+
+            <td>District Name</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CenterName</td>
+
+                <td>@item.CenterDistric</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
