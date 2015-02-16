@@ -1,31 +1,76 @@
-﻿@model List<CommunityMedicine.Models.NewCenter>
+﻿@model IEnumerable<CommunityMedicine.Models.NewCenter>
+
 @{
-    ViewBag.Title = "PDF";
-    Layout = null;
+    ViewBag.Title = "Index";
 }
-
-<h2>PDF</h2>
-
-<!DOCTYPE html>
 <html>
-<head>
-</head>
-<body>
-    <h2>Html List in PDF</h2>
-    <table width="100%">
+<h2>Hospital Name</h2>
+
+<body onload=" myFunction() ">
+
+<table class="table" id="myTable">
+    <thead>
+    <tr>
+        <p>Hello PDF</p>
+    </tr>
+    <tr>
+        <th style="color: cadetblue">
+            Center Name
+        </th>
+        <th style="color: cadetblue">
+            Center Code
+        </th>
+        <th style="color: cadetblue">
+            Password
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+
+   
+
         <tr>
-            <td>Center Name</td>
+            <td>
+                @ViewBag.name
+            </td>
+            <td>
+                @ViewBag.center
+            </td>
+            <td>
+                @ViewBag.password
+            </td>
 
-            <td>District Name</td>
         </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.CenterName</td>
+   
 
-                <td>@item.CenterDistric</td>
-            </tr>
-        }
-    </table>
+</table>
+
 </body>
 </html>
+
+@section scripts
+{
+    <script src="~/Scripts/tableExport.js"></script>
+    <script src="~/Scripts/jquery.base64.js"></script>
+
+    <script src="~/Scripts/sprintf.js"></script>
+    <script src="~/Scripts/jspdf.js"></script>
+    <script src="~/Scripts/base64.js"></script>
+
+    <script type="text/javascript">
+        //$(document).ready(function () {
+
+        //    $("#myBsdfsdfdfsutton").click(function () {
+        //        $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [3, 4] });
+        //    });
+
+
+        //});
+
+        function myFunction() {
+            //alert("Page Load");
+            $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4,5]});
+        }
+
+    </script>
+}

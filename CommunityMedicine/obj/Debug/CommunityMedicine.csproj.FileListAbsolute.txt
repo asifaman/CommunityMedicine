@@ -42,3 +42,196 @@ C:\Users\Asif\Documents\Visual Studio 2013\Projects\CommunityMedicine\CommunityM
 C:\Users\Asif\Documents\Visual Studio 2013\Projects\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\Asif\Documents\Visual Studio 2013\Projects\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WinForms.DLL
 C:\Users\Asif\Documents\Visual Studio 2013\Projects\CommunityMedicine\CommunityMedicine\bin\Microsoft.SqlServer.Types.dll
+F:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll.config
+F:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll
+F:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.pdb
+F:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.dll
+F:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.dll
+F:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.dll
+F:\CommunityMedicine\CommunityMedicine\bin\iTextSharp.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Common.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.DataVisualization.DLL
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Design.DLL
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebDesign.DLL
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebForms.DLL
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WinForms.DLL
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.SqlServer.Types.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Infrastructure.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.dll
+F:\CommunityMedicine\CommunityMedicine\bin\RazorPDF.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Rotativa.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.dll
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.dll
+F:\CommunityMedicine\CommunityMedicine\bin\WebGrease.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Interaction.dll
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Extensibility.dll
+F:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.xml
+F:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.xml
+F:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.xml
+F:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.pdb
+F:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.xml
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Interaction.xml
+F:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Extensibility.xml
+F:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csprojResolveAssemblyReference.cache
+F:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.dll
+F:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.pdb
+F:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.First.resources
+F:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csproj.GenerateResource.Cache
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll.config
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.pdb
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\EntityFramework.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\iTextSharp.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Common.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.DataVisualization.DLL
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Design.DLL
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebDesign.DLL
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WinForms.DLL
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.SqlServer.Types.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\RazorPDF.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Rotativa.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\WebGrease.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\EntityFramework.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.pdb
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.xml
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csprojResolveAssemblyReference.cache
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.First.resources
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.second.resources
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.third.resources
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csproj.GenerateResource.Cache
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.dll
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.pdb
+C:\Users\Asif\Documents\Visual Studio 2013\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.treatment.resources
+J:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll.config
+J:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll
+J:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.pdb
+J:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.dll
+J:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.dll
+J:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.dll
+J:\CommunityMedicine\CommunityMedicine\bin\iTextSharp.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Common.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.DataVisualization.DLL
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Design.DLL
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebDesign.DLL
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebForms.DLL
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WinForms.DLL
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.SqlServer.Types.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Helpers.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Infrastructure.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.dll
+J:\CommunityMedicine\CommunityMedicine\bin\RazorPDF.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Rotativa.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.dll
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.dll
+J:\CommunityMedicine\CommunityMedicine\bin\WebGrease.dll
+J:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.Data.dll
+J:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.WebData.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Interaction.dll
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Extensibility.dll
+J:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.xml
+J:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.xml
+J:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.xml
+J:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.pdb
+J:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.Data.xml
+J:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.WebData.xml
+J:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.xml
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Interaction.xml
+J:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Windows.Design.Extensibility.xml
+J:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csprojResolveAssemblyReference.cache
+J:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.dll
+J:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.pdb
+J:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.first.resources
+J:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csproj.GenerateResource.Cache
+E:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll.config
+E:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.dll
+E:\CommunityMedicine\CommunityMedicine\bin\CommunityMedicine.pdb
+E:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.dll
+E:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.dll
+E:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.dll
+E:\CommunityMedicine\CommunityMedicine\bin\iTextSharp.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Common.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.DataVisualization.DLL
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.Design.DLL
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebDesign.DLL
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WebForms.DLL
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.ReportViewer.WinForms.DLL
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.SqlServer.Types.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Helpers.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Microsoft.Web.Infrastructure.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.dll
+E:\CommunityMedicine\CommunityMedicine\bin\RazorPDF.dll
+E:\CommunityMedicine\CommunityMedicine\bin\Rotativa.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.dll
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.dll
+E:\CommunityMedicine\CommunityMedicine\bin\WebGrease.dll
+E:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.Data.dll
+E:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.WebData.dll
+E:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.xml
+E:\CommunityMedicine\CommunityMedicine\bin\EntityFramework.SqlServer.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Helpers.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Razor.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Deployment.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.WebPages.Razor.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Mvc.xml
+E:\CommunityMedicine\CommunityMedicine\bin\System.Web.Optimization.xml
+E:\CommunityMedicine\CommunityMedicine\bin\Antlr3.Runtime.pdb
+E:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.Data.xml
+E:\CommunityMedicine\CommunityMedicine\bin\WebMatrix.WebData.xml
+E:\CommunityMedicine\CommunityMedicine\bin\Newtonsoft.Json.xml
+E:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.Migrations.First.resources
+E:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csproj.GenerateResource.Cache
+E:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.dll
+E:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.pdb
+E:\CommunityMedicine\CommunityMedicine\obj\Debug\CommunityMedicine.csprojResolveAssemblyReference.cache

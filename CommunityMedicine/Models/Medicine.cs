@@ -11,8 +11,13 @@ namespace CommunityMedicine.Models
     {
         public int MedicineId { set; get; }
         [Required]
-        [Remote("MedicineCheck", "HeadOffice", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
+        [Remote("MedicineCheck", "HeadOffice", HttpMethod = "POST", ErrorMessage = "The Medicine already exists. Please enter a different Medicine name.")]
         public string GenericName { set; get; }
+        [Required]
+        [StringLength(3, ErrorMessage = "Max 3 digits")]
+        //[Remote("MedicineCheck", "HeadOffice", HttpMethod = "POST", ErrorMessage = "The Medicine Unit already exists.")]
         public string MeasurementUnit { set; get; }
+        [Required]
+        public string Power { set; get; }
     }
 }

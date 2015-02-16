@@ -1,8 +1,4 @@
-﻿@using System.Configuration
-@using System.Data.Entity
-@using System.Data.SqlClient
-@using CommunityMedicine.Models
-@model CommunityMedicine.Models.NewCenter
+﻿@model CommunityMedicine.Models.Thana
 
 @{
     ViewBag.Title = "Create";
@@ -18,44 +14,52 @@
 
     <div class="form-horizontal">
         <h4>Thana</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         <div class="form-group">
-            @Html.LabelFor(model => model.CenterName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CenterName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CenterName, "", new { @class = "text-danger" })
-            </div>
+            <label for="Center" class="col-sm-2 control-label">Center Name</label>
+            <input type="text" class="form-control" name="CenterName" id="CenterName" placeholder="Enter Center Name">
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.DistrictId, "DistrictId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DistrictId, "DistrictId", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("DistrictId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                @Html.DropDownList("CenterDistricId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.DistrictId, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
             <label for="Thananame" class="col-sm-2 control-label">Thana Name</label>
             <div class="col-sm-10">
-                <select class="form-control" id="Thananame" name="Thananame"></select>
-             
+                <select class="form-control" id="CenterthanaId" name="CenterthanaId"></select>
             </div>
         </div>
-
+        <input type="hidden" class="form-control" name="CenterCode" id="CenterCode">
+        <input type="hidden" class="form-control" name="Password" id="Password">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>
     </div>
+    
 }
-
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            $("#DistrictId").change(function () {
+        var a = Math.floor((Math.random() * 10 * 4 * 7) + 5 * 5 * 2 * 3 * 3 * 7);
+        var b = Math.floor((Math.random() * 5 * 4 * 2) + 6 * 7 * 3 * 2);
+        var CenterCode = a + b;
+      
+        document.getElementById("CenterCode").value = CenterCode;
+
+        var x = Math.floor((Math.random() * 25 * 2 * 3) + 7 * 4 * 6 * 5 * 8 * 2);
+        var y = Math.floor((Math.random() * 7 * 4 * 7) + 6 * 5 * 3 * 4);
+        var Password = x + y;
+
+        document.getElementById("Password").value = Password;
+
+        $(document).ready(function () {
+            $("#CenterDistricId").change(function () {
                 var optionSelected = $(this).find("option:selected");
                 var myData = { DistrictId: optionSelected.val() };
                 $.ajax({
@@ -64,10 +68,10 @@
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(myData),
                     dataType: "json",
-                    success: function(data) {
-                        $('#Thananame').empty().append('<option  value="">Select Thana</option>');
-                        $.each(data, function(index, value) {
-                            $('#Thananame').append($('<option/>', {
+                    success: function (data) {
+                        $('#CenterthanaId').empty().append('<option  value="">Select Thana</option>');
+                        $.each(data, function (index, value) {
+                            $('#CenterthanaId').append($('<option/>', {
                                 value: value.ThanaId,
                                 text: value.ThanaName
                             }));
@@ -76,7 +80,22 @@
                 });
             });
         });
+        
+        //$(document).ready(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "http://google.com/complete/search?q=google&output=toolbar",
+        //        dataType: "xml",
+        //        crossDomain: true,
+        //        xhrFields: { withCredentials: true },
+        //        success: function (xml) {
+        //            $(xml).find('toplevel').each(function () {
+        //                var title = $(this).find('suggestion').text();
+        //                $('<b>' + title + '</b>').appendTo('#page-wrap');
+        //            });
+        //        }
+        //    });
+        //});
     </script>
 }
 
-            

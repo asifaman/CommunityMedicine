@@ -1,0 +1,32 @@
+﻿@using CommunityMedicine.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Medicine Stock Report</h2>
+<table class="table">
+    <tr>
+        <th>
+            Medicine Name
+        </th>
+        <th>
+            Present Stock
+          
+        </th>
+        <th></th>
+    </tr>
+@foreach (var Item in  ViewBag.center)
+      {
+        <tr>
+            <td>
+                @Item.MedicineId            
+           </td>
+            <td>            
+                @Item.Quantity
+           </td>
+        </tr>
+      }
+</table>

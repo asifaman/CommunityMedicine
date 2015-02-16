@@ -1,0 +1,51 @@
+﻿@model CommunityMedicine.Models.Disease
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Disease</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DiseaseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiseaseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiseaseDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiseaseDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentProcedure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentProcedure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreferDrug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreferDrug)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DiseaseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -7,15 +7,17 @@
 
 <h2>Disease Entry</h2>
 
+<form name="Disease" id="Disease" action="Disease">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-<form role="form" id="DiseaseEntry">
     <div class="form-group">
         <label for="DiseaseName">Disease Name:</label>
         <input type="text" class="form-control" name="DiseaseName" id="DiseaseName">
     </div>
     <div class="form-group">
         <label for="Description">Description:</label>
-        <textarea name="Description" id="Description" class="form-control" rows="2"></textarea>
+        <textarea name="Description" id="DiseaseDescription" class="form-control" rows="2"></textarea>
     </div>
     <div class="form-group">
         <label for="TreatmentProcedure">Treatment Procedure:</label>
@@ -28,7 +30,7 @@
     <button type="submit" class="btn btn-default">Save</button>
 </form>
 @section scripts{
-    <script>
+    @*<script>
         $(document).ready(function () {
             $("#DiseaseEntry").submit(function () {
                 var diseaseName = $("#DiseaseName").val();
@@ -38,7 +40,7 @@
                 var myData = { diseaseName: diseaseName, description: description, treatmentProcedure: treatmentProcedure, preferDrug: preferDrug };
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("InsertDisease", "HeadOffice")',
+                    url: '@Url.Action("Disease", "HeadOffice")',
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(myData),
                     dataType: "json",
@@ -49,7 +51,7 @@
                 //return false;
             });
         });
-    </script>
+    </script>*@
 }
 
 

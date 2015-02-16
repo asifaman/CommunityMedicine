@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CommunityMedicine.Models.Disease>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiseaseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiseaseDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentProcedure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferDrug)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiseaseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiseaseDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatmentProcedure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreferDrug)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DiseaseId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DiseaseId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DiseaseId })
+        </td>
+    </tr>
+}
+
+</table>

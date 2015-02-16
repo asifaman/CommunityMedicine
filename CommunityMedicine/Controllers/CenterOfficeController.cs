@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 using CommunityMedicine.Models;
 
 namespace CommunityMedicine.Controllers
@@ -13,7 +14,7 @@ namespace CommunityMedicine.Controllers
     public class CenterOfficeController : Controller
     {
         private Gateway db = new Gateway();
-
+        private string voterIds;
         public ActionResult Index()
         {
             return View(db.DoctorEntrie.ToList());
@@ -50,10 +51,16 @@ namespace CommunityMedicine.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DoctorEntryId,Name,Degree,Specialization")] DoctorEntry doctorEntry)
+        public ActionResult Create([Bind(Include = "DoctorEntryId,Name,Degree,Specialization,CenterId")] DoctorEntry doctorEntry)
         {
+           
+                NewCenter aCenter = (NewCenter) base.Session["NewCenter"];
+
+                var centerCode = aCenter.CenterCode;
+           
             if (ModelState.IsValid)
             {
+                doctorEntry.CenterId = centerCode;
                 db.DoctorEntrie.Add(doctorEntry);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -126,6 +133,150 @@ namespace CommunityMedicine.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult CenterReport(NewCenter aNewCenter)
+        {
+            base.Session["NewCenter"] = aNewCenter;
+
+
+            var Code = aNewCenter.CenterCode;
+            var Passwords = aNewCenter.Password;
+            var CenterId = db.NewCenter.Where(i => i.Password == Passwords && i.CenterCode == Code).ToList();
+            foreach (var Item in CenterId)
+            {
+                var id = Item.NewCenterId;
+                ViewBag.center = db.SendMedicine.Where(x => x.NewCenterId == id).ToList();
+
+            }
+            return View();
+        }
+
+        public ActionResult PatientTreatMent()
+        {
+            NewCenter aCenter = (NewCenter)base.Session["NewCenter"];
+
+            var centerCode = aCenter.CenterCode;
+            ViewBag.Doctor = db.DoctorEntrie.Where(x => x.CenterId == centerCode).ToList();
+         
+            ViewBag.Disease = new List<Disease>(db.Disease);
+            var medicine = db.NewCenter.Where(x => x.CenterCode == centerCode);
+            foreach (var item in medicine)
+            {
+                var id = item.NewCenterId;
+                var centerid = db.SendMedicine.Where(x => x.NewCenterId == id).ToList();
+                foreach (var items in centerid)
+                {
+                    var ids = items.MedicineId;
+                    ViewBag.Medicine = ids;
+                }
+            }
+            ViewBag.Dose = new List<Dose>(db.Dose);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PatientTreatMent(List<Treatment> json)
+        {
+            foreach (Treatment treatment in json)
+            {
+                db.Treatment.Add(treatment);
+                db.SaveChanges();
+            }
+
+            Treatment aTreatment = new Treatment();
+            var servicetime = aTreatment.VoterId;
+            ViewBag.ServiceTime = db.Treatment.Count(x => x.VoterId == servicetime);
+
+            return View();
+        }
+       
+
+        public ActionResult GetVoterFromWebService(string voterid)
+        {
+            voterIds = voterid;
+            string uri = "http://nerdcastlebd.com/web_service/voterdb/index.php/voters/voter/" + voterid + "";
+
+            HttpWebRequest request = WebRequest.Create(uri) as HttpWebRequest;
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(response.GetResponseStream());
+            XmlNodeList nodes = xmlDoc.DocumentElement.SelectNodes("voter");
+            Treatment aVoter = new Treatment();
+            foreach (XmlNode node in nodes)
+            {
+                aVoter.VoterId = node.SelectSingleNode("id").InnerText;
+                aVoter.Name = node.SelectSingleNode("name").InnerText;
+                aVoter.Address = node.SelectSingleNode("address").InnerText;
+                aVoter.age = node.SelectSingleNode("date_of_birth").InnerText;
+            }
+            var service = db.Treatment.Count(x => x.VoterId == voterid);
+            aVoter.Treatmentcount = service;
+
+            return Json(aVoter, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetDistrict()
+        {
+            Treatment aTreatment = new Treatment();
+            NewCenter aCenter = (NewCenter)base.Session["NewCenter"];
+
+            var centerCode = aCenter.CenterCode;
+            aTreatment.CenterCode = centerCode.ToString();
+
+            var cName = db.NewCenter.Where(x => x.CenterCode == centerCode);
+            foreach (var Cname in cName)
+            {
+                var CName = Cname.CenterName;
+                aTreatment.Center = CName;
+            }
+
+            var cDistrictID = db.NewCenter.Where(x => x.CenterCode == centerCode);
+            foreach (var cdistrict in cDistrictID)
+            {
+                var Id = cdistrict.CenterDistricId;
+                var selectDistrict = db.District.Where(x => x.DistrictId == Id);
+                foreach (var id in selectDistrict)
+                {
+                    var districtId = id.DistrictName;
+                    aTreatment.District = districtId;
+                }
+            }
+
+            return Json(aTreatment, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult GetCenter(string Cvoterid)
+        {
+            var VoterInfo = db.Treatment.Where(x => x.VoterId == Cvoterid).ToList();
+
+            return Json(VoterInfo, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DiseaseWiseReport()
+        {
+            ViewBag.DisrictName = db.Treatment.ToList();
+
+            ViewBag.Disease = new List<Disease>(db.Disease);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DiseaseWiseReport(string date, string date2, string disease)
+        {
+            var diseasecount = db.Treatment.Count(x => x.DiseaseName == disease);
+
+           //var dis = from d in db.Treatment where d.DiseaseName == disease select d.District.Last();
+           //  ViewBag.DisrictName=dis.d   
+          
+            ViewBag.Disease = new List<Disease>(db.Disease);
+            return View(); 
         }
     }
 }
