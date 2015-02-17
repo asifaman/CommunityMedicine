@@ -1,5 +1,8 @@
 ﻿@using CommunityMedicine.Models
+<<<<<<< HEAD
 @using iTextSharp.text
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
 
 @{
     ViewBag.Title = "DiseaseWiseReport";
@@ -36,7 +39,11 @@
                         <div>
                             <select class="form-control" id="Disease" name="Disease">
                                 <option value="" selected>Select Disease</option>
+<<<<<<< HEAD
                                 @foreach (var disease in (List<Disease>) ViewBag.Disease)
+=======
+                                @foreach (var disease in ViewBag.Disease)
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                                 {
                                     <option value="@disease.DiseaseName">@disease.DiseaseName</option>
                                 }
@@ -47,6 +54,7 @@
                 </td>
                 <td>
                     <button type="submit" class="btn btn-primary" name="showreport" id="showreport">Show Report</button>
+<<<<<<< HEAD
                     <button type="button" class="btn btn-primary" onclick="myFunction()" name="print" id="print">Print PDF</button>
                 </td>
             </tr>
@@ -90,6 +98,21 @@
     </tr>
 </form>
 
+=======
+                </td>
+            </tr>
+        </table>
+    </tr>
+</form>
+@ViewBag.DisrictName
+@*@foreach (var d in ViewBag.DisrictName)
+{
+    <tr>
+        <th>@d.District</th>
+        
+    </tr>
+}*@
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
 
 @section myCss{
 
@@ -100,6 +123,7 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
     <script>
+<<<<<<< HEAD
         $(document).ready(function() {
 
             $("#Date").datepicker({ dateFormat: 'yy-mm-dd' });
@@ -154,5 +178,12 @@
             //alert("Page Load");
             $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4, 5] });
         }
+=======
+    $(document).ready(function () {
+
+        $("#Date").datepicker({ dateFormat: 'yy-mm-dd' });
+        $("#Date2").datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
     </script>
 }

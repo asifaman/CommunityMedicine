@@ -110,6 +110,7 @@ namespace CommunityMedicine.Controllers
         // POST: HeadOffice/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+<<<<<<< HEAD
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Medicine([Bind(Include = "MedicineId, GenericName, MeasurementUnit, Power")] Medicine medicine)
@@ -158,6 +159,56 @@ namespace CommunityMedicine.Controllers
             var genericName = db.Medicine.FirstOrDefault(x => x.GenericName == genericname );
             //var Unit = db.Medicine.FirstOrDefault(x => x.MeasurementUnit == unit);
 
+=======
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Medicine([Bind(Include = "MedicineId, GenericName, MeasurementUnit, Power")] Medicine medicine)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Medicine.Add(medicine);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(medicine);
+        }
+        public ActionResult InsertMedicine(string genericname, string measurementunit)
+        {
+            Medicine aMedicine = new Medicine() { GenericName = genericname, MeasurementUnit = measurementunit };
+            var Medicine = db.Medicine.AsEnumerable();
+            var nameCheck = from n in db.Medicine select new { n.GenericName };
+
+
+            db.Medicine.Add(aMedicine);
+            db.SaveChanges();
+            return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Disease()
+        {
+            return View(db.Disease.ToList());
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Disease([Bind(Include = "DiseaseId, DiseaseName, DiseaseDescription, TreatmentProcedure,PreferDrug")] Disease disease)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Disease.Add(disease);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(disease);
+        }
+       
+        public ActionResult MedicineCheck(string genericname, string unit)
+        {
+            var genericName = db.Medicine.FirstOrDefault(x => x.GenericName == genericname );
+            //var Unit = db.Medicine.FirstOrDefault(x => x.MeasurementUnit == unit);
+
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             if (genericName != null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
@@ -203,9 +254,33 @@ namespace CommunityMedicine.Controllers
             ViewBag.MedicineID = new List<Medicine>(db.Medicine);
             ViewBag.DistrictId = new SelectList(db.District, "DistrictId", "DistrictName");
             ViewBag.Selectmedicine = db.Medicine.ToList();
+<<<<<<< HEAD
+=======
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult SendMedicine(ICollection<SendMedicine> json)
+        {
+
+            foreach (SendMedicine medicineClinic in json)
+            {
+                db.SendMedicine.Add(medicineClinic);
+                db.SaveChanges();
+            }
+
+            ViewBag.DistrictID = new List<District>(db.District);
+            ViewBag.MedicineID = new List<Medicine>(db.Medicine);
+
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
+            return View();
+
+
+
+        }
+
+<<<<<<< HEAD
 
         [HttpPost]
         public ActionResult SendMedicine(ICollection<SendMedicine> json)
@@ -226,6 +301,8 @@ namespace CommunityMedicine.Controllers
 
         }
 
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
         public ActionResult FindCenter(string ThanaId)
         {
             int thanaId = Convert.ToInt32(ThanaId);
@@ -274,12 +351,21 @@ namespace CommunityMedicine.Controllers
             //                where r.Date >= new DateTime(date) && r.Date <= new DateTime(date2)
             //                select r;
             ViewBag.dhaka = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Dhaka");
+<<<<<<< HEAD
             ViewBag.khulna = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Khulna");
             ViewBag.chittagong = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Chittagong");
             ViewBag.barisal = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Barisal");
             ViewBag.rajshahi = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Rajshahi");
             ViewBag.rangpur = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Rangpur");
             ViewBag.sylhet = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Sylhet");
+=======
+            ViewBag.khulna = db.Treatment.Count(x => x.DiseaseName == disease && x.District == "Patuakhali");
+            //ViewBag.chittagong = db.Treatment.Count(x => x.DiseaseName == disease && x.District == 3);
+            //ViewBag.barisal = db.Treatment.Count(x => x.DiseaseName == disease && x.District == 4);
+            //ViewBag.rajshahi = db.Treatment.Count(x => x.DiseaseName == disease && x.District == 5);
+            //ViewBag.rangpur = db.Treatment.Count(x => x.DiseaseName == disease && x.District == 6);
+            //ViewBag.sylhet = db.Treatment.Count(x => x.DiseaseName == disease && x.District == 7);
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
 
 
             ViewBag.Disease = new List<Disease>(db.Disease);
@@ -292,6 +378,7 @@ namespace CommunityMedicine.Controllers
         {
             ViewBag.District = new List<District>(db.District);
             return View();
+<<<<<<< HEAD
         }
 
         [HttpPost]
@@ -324,5 +411,33 @@ namespace CommunityMedicine.Controllers
             return View();
         }
 
+=======
+        }
+
+        [HttpPost]
+
+        public ActionResult BarChart(string date, string date2, int district)
+        {
+            ViewBag.fromdate = date;
+            ViewBag.todate = date2;
+            string districtid = Convert.ToString(district);
+            ViewBag.districtname = db.District.Select(x => x.DistrictName == districtid);
+
+            //var datecount = from d in db.Treatment where (Convert.ToInt16(d.Date = date) < Convert.ToInt16(d.Date = date2)) select d;
+            //var datecount = from r in db.Treatment
+            //                where r.Date >= new DateTime(date) && r.Date <= new DateTime(date2)
+            //                select r;
+            //ViewBag.malaria = db.Treatment.Count(x => x.District== district && x.DiseaseName=="Malaria");
+            //ViewBag.fever = db.Treatment.Count(x => x.District == district && x.DiseaseName == "Fever");
+
+
+
+            ViewBag.District = new List<District>(db.District);
+
+
+            return View();
+        }
+
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
     }
 }

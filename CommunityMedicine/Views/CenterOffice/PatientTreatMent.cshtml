@@ -43,7 +43,11 @@
                         <label for="DateOfBirth" class="col-sm-2 control-label">Age</label>
                     </td>
                     <td>
+<<<<<<< HEAD
                         <input type="text" class="form-control" id="Age" name="Age">
+=======
+                        <input type="text" class="form-control" id="DateOfBirth" name="Age">
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                     </td>
                 </div>
                 <td>
@@ -124,7 +128,11 @@
               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD
                     <button type="button" class="btn btn-primary" onclick="myPrintFunction()">Print PDF</button>
+=======
+                    <button type="button" class="btn btn-primary" onclick="myFunction()">Print PDF</button>
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                 </div>
             </div>
         </div>
@@ -321,8 +329,11 @@
         </table>
         <td>
             <button type="submit" class="btn btn-primary" name="Save" id="Save">Save </button>
+<<<<<<< HEAD
             <button type="button" class="btn btn-primary" onclick="myPrint()" name="PdfPrint" id="PdfPrint">PDF Print </button>
 
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
         </td>
     </form>
     <input type="hidden" class="form-control" name="cCode" id="cCode">
@@ -455,7 +466,11 @@
                         $("#Name").val(data.Name);
                         $("#Address").val(data.Address);
                         $("#ServiceGiven").val(data.Treatmentcount);
+<<<<<<< HEAD
                         $("#Age").val(data.age);
+=======
+
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                     },
                 });
             });
@@ -535,6 +550,7 @@
 
     //});
 
+<<<<<<< HEAD
     function myPrintFunction() {
         //alert("Page Load");
         $('#infotable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4, 5] });
@@ -547,6 +563,16 @@
 </script>
 }
 
+=======
+    function myFunction() {
+        //alert("Page Load");
+        $('#infotable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4, 5] });
+    }
+
+</script>
+}
+}
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
 
     <script>
 

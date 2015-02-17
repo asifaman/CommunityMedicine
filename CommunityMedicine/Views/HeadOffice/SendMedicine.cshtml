@@ -20,12 +20,17 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CenterDistricId, "DistrictId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+<<<<<<< HEAD
                 @try
                 {
                     @Html.DropDownList("DistrictId", null, htmlAttributes: new {@class = "form-control"})
                 }
                 catch (InvalidOperationException ex) { }
                 @Html.ValidationMessageFor(model => model.CenterDistricId, "", new {@class = "text-danger"})
+=======
+                @Html.DropDownList("DistrictId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CenterDistricId, "", new { @class = "text-danger" })
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             </div>
         </div>
         <div class="form-group">
@@ -56,7 +61,11 @@
 
                                 @foreach (var Item in (List<Medicine>)ViewBag.Selectmedicine)
                                 {
+<<<<<<< HEAD
                                     <option value="@Item.GenericName">@Item.GenericName - @Item.MeasurementUnit - @Item.Power</option>
+=======
+                                    <option value="@Item.GenericName">@Item.GenericName</option>
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                                 }
                             </select>
                         </div>
@@ -82,6 +91,7 @@
     </div>
 
     </tr>
+<<<<<<< HEAD
     </table>
 
     <table class="table table-bordered" id="MedicineTable">
@@ -95,6 +105,21 @@
         <tbody id="tBoby"></tbody>
     </table>
 
+=======
+    </table>
+
+    <table class="table table-bordered" id="MedicineTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody id="tBoby"></tbody>
+    </table>
+
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10" align="left">
             <input type="submit" value="Save" class="btn btn-default" name="saveButton" />

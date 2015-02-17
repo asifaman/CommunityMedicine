@@ -35,7 +35,11 @@
                                 <option value="" selected>Select District</option>
                                 @foreach (var District in ViewBag.District)
                                 {
+<<<<<<< HEAD
                                     <option value="@District.DistrictName">@District.DistrictName</option>
+=======
+                                    <option value="@District.DistrictId">@District.DistrictName</option>
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
                                 }
                             </select>
                         </div>
@@ -53,6 +57,7 @@
 <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
+<<<<<<< HEAD
     google.load("visualization", "1.1", { packages: ["bar"] });
     google.setOnLoadCallback(drawStuff);
 
@@ -65,10 +70,23 @@
           ["Malaria", @ViewBag.malaria],
           ["Influenza", @ViewBag.influenza]
             
+=======
+        google.load("visualization", "1.1", { packages: ["bar"] });
+        google.setOnLoadCallback(drawStuff);
+
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+              ['Disease', 'Total'],
+              ["Influenza", 44],
+              ["Fever", 31],
+              ["Malaria", @ViewBag.malaria],
+              ['Other', 3]
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             ]);
 
             var options = {
                 title: 'Disrict Report Date: @ViewBag.fromdate To @ViewBag.todate',
+<<<<<<< HEAD
             width: 900,
             legend: { position: 'none' },
             chart: { subtitle: 'Disease Report' },
@@ -84,6 +102,23 @@
         // Convert the Classic options to Material options.
         chart.draw(data, google.charts.Bar.convertOptions(options));
     };
+=======
+                width: 900,
+                legend: { position: 'none' },
+                chart: { subtitle: 'Disease Report' },
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'White to move' } // Top x-axis.
+                    }
+                },
+                bar: { groupWidth: "90%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
     </script>
 </head>
 <body>

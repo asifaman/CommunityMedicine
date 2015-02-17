@@ -209,24 +209,33 @@ namespace CommunityMedicine.Controllers
             xmlDoc.Load(response.GetResponseStream());
             XmlNodeList nodes = xmlDoc.DocumentElement.SelectNodes("voter");
             Treatment aVoter = new Treatment();
+<<<<<<< HEAD
             DateTime Birth = new DateTime();
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             foreach (XmlNode node in nodes)
             {
                 aVoter.VoterId = node.SelectSingleNode("id").InnerText;
                 aVoter.Name = node.SelectSingleNode("name").InnerText;
                 aVoter.Address = node.SelectSingleNode("address").InnerText;
                 aVoter.age = node.SelectSingleNode("date_of_birth").InnerText;
+<<<<<<< HEAD
                 Birth = new DateTime(1954, 7, 30);
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             }
             var service = db.Treatment.Count(x => x.VoterId == voterid);
             aVoter.Treatmentcount = service;
 
+<<<<<<< HEAD
            
             DateTime Today = DateTime.Now;
             TimeSpan Span = Today - Birth;
             DateTime Age = DateTime.MinValue + Span;
             int Years = Age.Year - 1;
             aVoter.age = Years.ToString();
+=======
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             return Json(aVoter, JsonRequestBehavior.AllowGet);
         }
 
@@ -270,16 +279,23 @@ namespace CommunityMedicine.Controllers
 
         public ActionResult DiseaseWiseReport()
         {
+<<<<<<< HEAD
             //ViewBag.DisrictName = db.Treatment.ToList();
             //ViewBag.diseasecount = db.Treatment.ToList();
             ViewBag.Disease = new List<Disease>(db.Disease).ToList();
 
+=======
+            ViewBag.DisrictName = db.Treatment.ToList();
+
+            ViewBag.Disease = new List<Disease>(db.Disease);
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
             return View();
         }
 
         [HttpPost]
         public ActionResult DiseaseWiseReport(string date, string date2, string disease)
         {
+<<<<<<< HEAD
 
             var district = db.Treatment.Where(x => x.DiseaseName == disease).Select(x => x.District).Distinct().ToList();
             ViewBag.DisrictName = district;
@@ -310,5 +326,15 @@ namespace CommunityMedicine.Controllers
         //    var alll = district.Concat<string>(second: count.ToString());
         //    return Json(district, JsonRequestBehavior.AllowGet);
         //}
+=======
+            var diseasecount = db.Treatment.Count(x => x.DiseaseName == disease);
+
+           //var dis = from d in db.Treatment where d.DiseaseName == disease select d.District.Last();
+           //  ViewBag.DisrictName=dis.d   
+          
+            ViewBag.Disease = new List<Disease>(db.Disease);
+            return View(); 
+        }
+>>>>>>> c1402b73e19300b196c83b73a73890cad785c55a
     }
 }
