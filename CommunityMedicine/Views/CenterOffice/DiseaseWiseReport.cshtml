@@ -1,0 +1,158 @@
+﻿@using CommunityMedicine.Models
+@using iTextSharp.text
+
+@{
+    ViewBag.Title = "DiseaseWiseReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Disease Wise Report</h2>
+
+<form id="DiseaseReport" name="DiseaseReport" action="DiseaseWiseReport" method="POST">
+    <tr>
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="Date" class="col-sm-2 control-label">From</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Date" name="Date">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label for="Date" class="col-sm-2 control-label">To</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="Date2" name="Date2">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="Date" class="col-sm-2 control-label">Disease</label>
+                        <div>
+                            <select class="form-control" id="Disease" name="Disease">
+                                <option value="" selected>Select Disease</option>
+                                @foreach (var disease in (List<Disease>) ViewBag.Disease)
+                                {
+                                    <option value="@disease.DiseaseName">@disease.DiseaseName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary" name="showreport" id="showreport">Show Report</button>
+                    <button type="button" class="btn btn-primary" onclick="myFunction()" name="print" id="print">Print PDF</button>
+                </td>
+            </tr>
+        </table>
+        @*<table class="table" id="infotable">
+            <thead>
+            <tr>
+                <th>District Name</th>
+                <th>Total Patient</th>
+                <th>% Over Population</th>
+            </tr>
+            </thead>
+           
+            <tbody id="records_table"></tbody>
+          
+        </table>*@
+        <table class="table" id="myTable">
+            <thead>
+            <tr>
+                <th>District Name</th>
+                <th>Total Patient</th>
+                <th>% Over Population</th>
+            </tr>
+            </thead>
+            <tr><td>
+                @foreach (var d in ViewBag.DisrictName)
+                    {
+                     <p>@d</p>
+                    }
+              </td>
+                <td>
+                    
+                        <p>@ViewBag.diseasecount</p>
+                    </td>
+                <td>
+                    <p>
+                        @ViewBag.Total 
+                    </p></td>
+            </tr>
+        </table>
+    </tr>
+</form>
+
+
+@section myCss{
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+}
+@section scripts{
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#Date").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#Date2").datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+
+    @*<script>
+        $(document).ready(function() {
+            $("#Disease").change(function() {
+                var optionSelected = $(this).find("option:selected");
+                var myData = { Disease: optionSelected.val() };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCenterReport", "CenterOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(myData),
+                    dataType: "json",
+                    success: function(data) {
+                        $('#records_table').empty();
+                        var trHTML = '';
+                        $.each(data, function(i, item) {
+                            trHTML += '<tr><td>' + item + '</td><td>' + item + '</td><td>';
+                        });
+                        $('#records_table').append(trHTML);
+                    }
+
+                });
+            });
+        });*@
+
+    @*</script>*@
+
+<script src="~/Scripts/tableExport.js"></script>
+<script src="~/Scripts/jquery.base64.js"></script>
+
+<script src="~/Scripts/sprintf.js"></script>
+<script src="~/Scripts/jspdf.js"></script>
+<script src="~/Scripts/base64.js"></script>
+
+    <script type="text/javascript">
+        //$(document).ready(function () {
+
+        //    $("#myBsdfsdfdfsutton").click(function () {
+        //        $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [3, 4] });
+        //    });
+
+
+        //});
+
+        function myFunction() {
+            //alert("Page Load");
+            $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4, 5] });
+        }
+    </script>
+}

@@ -1,84 +1,59 @@
-﻿
-@model IEnumerable<CommunityMedicine.Models.Medicine>
+﻿@model CommunityMedicine.Models.Medicine
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Create";
 }
 
+<h2>Medicine Entry Form</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-@{
-    ViewBag.Title = "Create Medicine";
+    <div class="form-horizontal">
+        <h4>Medicine</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenericName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GenericName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GenericName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MeasurementUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MeasurementUnit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MeasurementUnit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Power" class="col-sm-2 control-label">Select Unit</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="Power" name="Power">
+                    <option value="" selected>Select Unit</option>
+
+                    @foreach (var Item in ViewBag.MeasurementUnit)
+                    {
+                        <option value="@Item.Name">@Item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
 }
 
-<h2>Create Medicine</h2>
-
-
-<form role="form" id="MedicineEntry">
-    <div class="form-group">
-        <label for="GenericName">GenericName:</label>
-        <input type="text" class="form-control" name="GenericName" id="GenericName">
-    </div>
-    <div class="form-group">
-        <label for="MeasurementUnit">MeasurementUnit:</label>
-        <input type="text" class="form-control" name="MeasurementUnit" id="MeasurementUnit">
-    </div>
-
-    <button type="submit" class="btn btn-default">Save</button>
-</form>
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $("#MedicineEntry").submit(function () {
-                var genericname = $("#GenericName").val();
-                var measurementunit = $("#MeasurementUnit").val();
-                var myData = { genericname: genericname, measurementunit: measurementunit };
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("InsertMedicine", "HeadOffice")',
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(myData),
-                    dataType: "json",
-                    //success: function (data) {
-                    //    $('#myinfoTable tbody').append('<tr><td>' + data.genericname + '</td><td>' + data.measurementunit + '</td></tr>');
-                    //},
-                });
-                //return false;
-            });
-        });
-    </script>
-}
-<h2>List of Medicine</h2>
-<table class="table" id="myinfoTable">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GenericName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MeasurementUnit)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GenericName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeasurementUnit)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MedicineId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MedicineId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MedicineId })
-            </td>
-        </tr>
-    }
-
-</table>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

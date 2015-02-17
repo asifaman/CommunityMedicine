@@ -1,4 +1,5 @@
-﻿@model CommunityMedicine.Models.SendMedicine
+﻿@using CommunityMedicine.Models
+@model CommunityMedicine.Models.NewCenter
 
 @{
     ViewBag.Title = "Send Medicine";
@@ -8,79 +9,231 @@
 <h2>Send Medicine To Center</h2>
 
 
-@using (Html.BeginForm())
-{
+<form id="medicineForm" action="HeadOffice/SendMedicine" method="POST" name="medicineForm">
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            <label for="District" class="col-sm-2 control-label">District Name</label>
-            <div class="col-sm-10">
-                <select class="form-control" id="Districtname"></select>
+            @Html.LabelFor(model => model.CenterDistricId, "DistrictId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @try
+                {
+                    @Html.DropDownList("DistrictId", null, htmlAttributes: new {@class = "form-control"})
+                }
+                catch (InvalidOperationException ex) { }
+                @Html.ValidationMessageFor(model => model.CenterDistricId, "", new {@class = "text-danger"})
             </div>
         </div>
         <div class="form-group">
-            <label for="Thana" class="col-sm-2 control-label">Thana Name</label>
+            <label for="Thananame" class="col-sm-2 control-label">Thana Name</label>
             <div class="col-sm-10">
                 <select class="form-control" id="Thananame"></select>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="Center" class="col-sm-2 control-label">Center Name</label>
+            <label for="Centername" class="col-sm-2 control-label">Center Name</label>
             <div class="col-sm-10">
                 <select class="form-control" id="Centername"></select>
             </div>
         </div>
         <h2> Add Medicine </h2>
+        <table class="table">
+            <tr>
 
-        <div class="form-group">
-            <label for="SelectMedicine" class="col-sm-2 control-label">Select Medicine</label>
-            <div class="col-sm-10">
-                <select class="form-control" id="SelectMedicine"></select>
-            </div>
-        </div>
-        
-            <div class="form-group">
-                <label for="Quantity" class="col-sm-2 control-label">Quantity</label>
-                <input type="text" class="form-control" id="Quantity" placeholder="Enter Quantity">
-            </div>
-        
-           
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                <div class="form-group">
+                    <td>
+                        <label for="SelectMedicine" class="col-sm-2 control-label">Select Medicine</label>
+                    </td>
+                    <td>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="SelectMedicine">
+                                <option value="" selected>Select Medicine</option>
+
+                                @foreach (var Item in (List<Medicine>)ViewBag.Selectmedicine)
+                                {
+                                    <option value="@Item.GenericName">@Item.GenericName - @Item.MeasurementUnit - @Item.Power</option>
+                                }
+                            </select>
+                        </div>
+                    </td>
                 </div>
-            </div>
-</div>
-}
-<button onclick="appendText()">Add</button>
-<div class="table-responsive">
-    <table class="table">
-        <tr>Quantity</tr><br/>
-        <tr id="qty" ></tr>
+
+                <td>
+                    <div class="form-group">
+                <td>
+                    <label for="Quantity" class="col-sm-2 control-label">Quantity</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="Quantity" placeholder="Enter Quantity">
+                </td>
+                <td>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+
+                            <button type="button" class="btn btn-default" name="Addbutton" id="Addbutton" value="Add">Add To Table </button>
+                        </div>
+                    </div>
+                </td>
+    </div>
+
+    </tr>
     </table>
-</div>
+
+    <table class="table table-bordered" id="MedicineTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody id="tBoby"></tbody>
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10" align="left">
+            <input type="submit" value="Save" class="btn btn-default" name="saveButton" />
+        </div>
+    </div>
+    </div>
+</form>
+
+
+
 @section Scripts {
     <script>
-        
-        //$(document).ready(function () {
-        //    $("#DiseaseEntry").submit(function () {
-                function appendText() {
-                    var quantity = $("#Quantity").val();            // Create text with HTML
-                    //var medicinename = $("#Medicinename").text();
-                    
-                    // Create text with DOM
-                    $("#qty").append(quantity);             // Append new elements
-                    
+        $(document).ready(function () {
+            $("#DistrictId").change(function () {
+                var optionSelected = $(this).find("option:selected");
+                var myData = { DistrictId: optionSelected.val() };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("FindThana", "HeadOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(myData),
+                    dataType: "json",
+                    success: function (data) {
+                        $('#Thananame').empty().append('<option  value="">Select Thana</option>');
+                        $.each(data, function (index, value) {
+                            $('#Thananame').append($('<option/>', {
+                                value: value.ThanaId,
+                                text: value.ThanaName
+                            }));
+                        });
+                    },
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $("#Thananame").change(function () {
+                var optionSelected = $(this).find("option:selected");
+                var myData = { ThanaId: optionSelected.val() };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("FindCenter", "HeadOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(myData),
+                    dataType: "json",
+                    success: function (data) {
+                        $('#Centername').empty().append('<option  value="">Select Center</option>');
+                        $.each(data, function (index, value) {
+                            $('#Centername').append($('<option/>', {
+                                value: value.NewCenterId,
+                                text: value.CenterName
+                            }));
+                        });
+                    },
+                });
+            });
+        });
+
+        $("#Addbutton").click(function () {
+
+            var x = 1;
+
+            //var optionSelected = $("#Thananame").find("option:selected");
+            //var selectedDistrict = $("#DistrictId").find("option:selected");
+            //var selectedMedicine = $("#SelectMedicine").find("option:selected");
+            //var selectedClinic = $("#Centername").find("option:selected");
+
+            if (x == 1) {
+
+                var chk = 0;
+
+                if (chk == 0) {
+
+                    var newRowContent = "<tr><td>" +
+                        $("#SelectMedicine option:selected").text() +
+                        "</td><td class=\"qty\" data-Clinic=\"" + $("#Centername").find("option:selected").val() +
+                        "\" id=\"" + $("#SelectMedicine option:selected").val() + "\">" + $("#Quantity").val() +
+
+                       "</td></tr>";
+                    $("#MedicineTable tbody").append(newRowContent);
+
                 }
-                
-        //    });
-        //});
+
+            }
+
+        });
+
+        $("#medicineForm").submit(function () {
+
+            var medClinic = [];
+
+            //ev.preventDefault(); // to stop the form from submitting
+
+            $('#MedicineTable > tbody > tr').each(function () {
+
+
+                $('td', this).each(function () {
+                    if ($(this).attr('class') == "qty") {
+                        alert($(this).attr('id'));
+
+                        medClinic.push({
+                            MedicineId: ($(this).attr('id')),
+                            Quantity: parseInt($(this).text()),
+                            NewCenterId: parseInt($(this).attr('data-Clinic')),
+
+
+                        });
+                    }
+
+                });
+            });
+
+
+            $.ajax({
+                url: this.action,
+
+                type: "POST",
+                url: "@Url.Action("SendMedicine", "HeadOffice")",
+
+                data: JSON.stringify(medClinic),
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    //alert(1);
+                    // ...
+                },
+                error: function (request) {
+                    // ...
+                }
+            });
+
+
+
+            return false;
+        });
+
+
     </script>
 }
+
+
+
 

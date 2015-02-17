@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Community Medicine in Bangladesh</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("myCss", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,6 +30,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Head Office Activity", "Index", "HeadOffice")</li>
                     <li>@Html.ActionLink("Center Activity", "Index", "CenterOffice")</li>
+                    <li>@Html.ActionLink("Disease Demographic Report", "Map", "HeadOffice")</li>
+                    <li>@Html.ActionLink("Bar Chart Report", "BarChart", "HeadOffice")</li>
+                    <li>@Html.ActionLink("Login", "Login", "CenterOffice")</li>
+
+
                 </ul>
             </div>
         </div>

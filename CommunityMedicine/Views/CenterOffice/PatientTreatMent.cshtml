@@ -1,0 +1,556 @@
+﻿@using System.Activities.Statements
+@using CommunityMedicine.Models
+
+@{
+    ViewBag.Title = "PatientTreatMent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Patient TreatMent</h2>
+    <form id="Treatment" name="Treatment" method="POST" action="PatientTreatMent">
+        <tr>
+            <div class="form-group">
+
+                <td>
+                    <label for="VoterId" class="col-sm-2 control-label">Voter Id</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="VoterId" name="VoterId" placeholder="Enter Voter Id">
+                </td>
+
+            </div>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <td>
+                        <label for="Name" class="col-sm-2 control-label">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="Name" name="Name">
+                    </td>
+                </div>
+                <div class="form-group">
+                    <td>
+                        <label for="Address" class="col-sm-2 control-label">Address</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="Address" name="Address">
+                    </td>
+                </div>
+                <div class="form-group">
+                    <td>
+                        <label for="DateOfBirth" class="col-sm-2 control-label">Age</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="Age" name="Age">
+                    </td>
+                </div>
+                <td>
+
+                    <button type="button" class="btn btn-success"  name="ShowDetails" id="ShowDetails">Show Details </button>
+
+                </td>
+                <div class="form-group">
+                    <td>
+                        <label for="ServiceGiven" class="col-sm-2 control-label">Service Given</label>
+                    </td>
+               
+                    <td>
+                        <input type="text" class="form-control" id="ServiceGiven" name="ServiceGiven">
+                    </td>
+                    <td>
+                        <label for="ServiceGiven" class="col-sm-2 control-label">Times</label>
+                    </td>
+                </div>
+                <td>
+                    <button type="button" class="btn btn-primary btn-lg" id="allshowhistory" data-toggle="modal" data-target="#myModal">Show All History </button>
+                </td>
+            </td>
+        </tr>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Patient History</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <tr>
+                            <div class="form-group">
+
+                                <td>
+                                    <label for="VoterId" class="col-sm-2 control-label">Voter Id</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="historyVoterId" name="historyVoterId" placeholder="Enter Voter Id">
+                                </td>
+
+                            </div>
+                        </tr>
+                        <tr>
+                            <td>
+                            <div class="form-group">
+                                <td>
+                                    <label for="Name" class="col-sm-2 control-label">Name</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="historyName" name="historyName">
+                                </td>
+                            </div>
+                            <div class="form-group">
+                                <td>
+                                    <label for="Address" class="col-sm-2 control-label">Address</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="historyAddress" name="historyAddress">
+                                </td>
+                            </div>
+                        </tr>
+                    </div>
+
+                    <table  class="table" id="infotable">
+                        <thead>
+                        <tr>
+
+                            <th>Center Name</th>
+                            <th>Center Code</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="records_table"></tbody>
+                    </table>
+              
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="myPrintFunction()">Print PDF</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <table class="table">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Observasion">Observasion:</label>
+                            <textarea name="Observation" id="Observation" class="form-control" rows="2"></textarea>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="Date" class="col-sm-2 control-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Date" name="Date">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                    <td>
+                        <label for="Doctor" class=" control-label">Doctor Name</label>
+                    </td>
+                    <td>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="DoctorName" name="DoctorName">
+                                <option value="" selected>Select Doctor</option>
+                                    @try
+                                    {
+                                        foreach (var doctor in (List<DoctorEntry>) ViewBag.Doctor)
+                                         {
+                                             <option value="@doctor.DoctorEntryId">@doctor.Name</option>
+                                         }
+                                    }
+                                    catch (NullReferenceException exception)
+                                    {
+                                        
+                                    }
+                            </select>
+
+                        </div>
+                    </td>
+        </div>
+        </td>
+        </tr>
+        </table>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <table class="table">
+                <tr>
+
+                    <td>
+                        <div class="form-group">
+                    <td>
+                        <label for="Disease" class="control-label">Disease</label>
+                    </td>
+                    <td>
+                        <div>
+                            <select class="form-control" id="Disease" name="Disease">
+                                <option value="" selected>Select Disease</option>
+                                @try
+                                    {
+                                foreach (var disease in (List<Disease>)ViewBag.Disease)
+                                {
+                                    <option value="@disease.DiseaseId">@disease.DiseaseName</option>
+                                }
+                                    }
+                               catch (NullReferenceException exception)
+                                {
+
+                                }
+                                
+                            </select>
+                        </div>
+                    </td>
+        </div>
+        </td>
+        <td>
+            <div class="form-group">
+        <td>
+            <label for="Medicine" class="control-label">Medicine</label>
+        </td>
+        <td>
+            <div>
+                <select class="form-control" id="Medicine" name="Medicine">
+                    <option value="" selected>Select Medicine</option>
+                       @try
+                                    {
+                    //foreach (var medicine in (List<Medicine>)ViewBag.Medicine)
+                    //{
+                        <option value="@ViewBag.Medicine">@ViewBag.Medicine</option>
+                    //}
+                                    }
+                   catch (NullReferenceException exception)
+                     {
+
+                     }
+                </select>
+            </div>
+        </td>
+        </div>
+        </td>
+        <td>
+            <div class="form-group">
+        <td>
+            <label for="Dose" class="control-label">Dose</label>
+        </td>
+        <td>
+            <div>
+                <select class="form-control" id="Dose" name="Dose">
+                    <option value="" selected>Select Dose</option>
+                      @try
+                                    {
+                    foreach (var dose in (List<Dose>)ViewBag.Dose)
+                    {
+                        <option value="@dose.DoseId" selected>@dose.DoseName</option>
+                    }
+                                    }
+                  catch (NullReferenceException exception)
+                     {
+
+                     }
+                </select>
+            </div>
+        </td>
+        </div>
+        </td>
+        <td>
+            <div>
+                <form>
+                    <input type="radio" name="radiobutton" onclick="myFunction(this.value)" value="Before Meal">Before Meal<br>
+                    <input type="radio" name="radiobutton" onclick="myFunction(this.value)" value="After Meal">After Meal<br>
+
+
+                    <input type="hidden" id="radioresult">
+
+                </form>
+            </div>
+        </td>
+        <td>
+            <div class="form-group">
+        <td>
+            <label for="Quantity" class=" control-label">Qty</label>
+        </td>
+        <td>
+            <input type="text" class="form-control" id="Quantity" name="Quantity" placeholder="Enter Quantity">
+        </td>
+        </div>
+        </td>
+        <td>
+            <div class="form-group">
+                <td>
+
+            <label for="Note" class=" control-label">Note</label>
+        </td>
+        <td>
+            <input type="text" class="form-control" id="Note" name="Note" placeholder="Write Note">
+        </td>
+        </div>
+        </td>
+
+        </tr>
+
+        </table >
+        </div>
+        <ul id="ProfileList"></ul>
+        <div style="margin-top: 10px;">
+            <table class="table">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-primary" name="AddTreatMent" id="AddTreatMent">Add TreatMent </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <table class="table table-bordered" id="TreatmentTable">
+            <thead>
+                <tr>
+                    <th>Disease</th>
+                    <th>Medicine</th>
+                    <th>Dose</th>
+                    <th>Before/After Meal</th>
+                    <th>Qty Given</th>
+                    <th>Note</th>
+
+                </tr>
+            </thead>
+            <tbody id="tBoby"></tbody>
+        </table>
+        <td>
+            <button type="submit" class="btn btn-primary" name="Save" id="Save">Save </button>
+            <button type="button" class="btn btn-primary" onclick="myPrint()" name="PdfPrint" id="PdfPrint">PDF Print </button>
+
+        </td>
+    </form>
+    <input type="hidden" class="form-control" name="cCode" id="cCode">
+    <input type="hidden" class="form-control" name="cCenter" id="cCenter">
+    <input type="hidden" class="form-control" name="cDistrict" id="cDistrict">
+
+
+@section myCss{
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+}
+
+@section scripts{
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#Date").datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+
+        function myFunction(radiobutton) {
+            document.getElementById("radioresult").value = radiobutton;
+        }
+
+        $("#AddTreatMent").click(function() {
+
+            var x = 1;
+
+            if (x == 1) {
+
+                var chk = 0;
+
+                if (chk == 0) {
+
+                    var newRowContent = "<tr><td>" +
+                        $("#Disease option:selected").text() +
+                        "</td><td class=\"qty\" data-Dose=\"" + $("#Dose").find("option:selected").val() + "\"data-Qty=\"" + $("#Quantity").val() + "\"data-Meal=\"" + $("#radioresult").val() + "\"data-Note=\"" + $("#Note").val() +
+                        "\" id=\"" + $("#Disease option:selected").text() + "\">" +
+                        $("#Medicine option:selected").text() +
+                        "</td><td class=\"qty1\" data-Medicines=\"" + $("#Medicine").text() +
+                        "\" id1=\"" + $("#Medicine option:selected").text() + "\">" +
+                        $("#Dose option:selected").text() +
+                        "</td><td class=\"qty2\" data-Doses=\"" + $("#Dose").find("option:selected").val() +
+                        "\" id2=\"" + $("#Dose option:selected").text() + "\">" + $("#radioresult").val() +
+                        "</td><td class=\"qty3\" data-Qty=\"" + $("#Quantity").find("option:selected").val() +
+                        "\" id3=\"" + $("#Quantity option:selected").text() + "\">" + $("#Quantity").val() +
+                        "</td><td class=\"qty4\" data-Note=\"" + $("#Note").text() +
+                        "\" id4=\"" + $("#Note option:selected").text() + "\">" + $("#Note").val() +
+                        "</td></tr>";
+                    $("#TreatmentTable tbody").append(newRowContent);
+
+                }
+
+            }
+
+        });
+
+        $("#Treatment").submit(function() {
+
+            var medClinic = [];
+            //ev.preventDefault(); // to stop the form from submitting
+            $('#TreatmentTable > tbody > tr').each(function() {
+
+                $('td', this).each(function() {
+                    if ($(this).attr('class') == "qty") {
+                        alert($(this).attr('id'));
+
+                        var voterid = document.getElementById('VoterId').value;
+                        var observation = document.getElementById('Observation').value;
+                        var date = document.getElementById('Date').value;
+                        var doctorname = document.getElementById('DoctorName').value;
+                        var name = document.getElementById('Name').value;
+                        var address = document.getElementById('Address').value;
+                        var centercode = document.getElementById('cCode').value;
+                        var centername = document.getElementById('cCenter').value;
+                        var centerdistrict = document.getElementById('cDistrict').value;
+
+                        medClinic.push({
+                            VoterId: voterid,
+                            Observation: observation,
+                            Date: date,
+                            DoctorName: doctorname,
+                            DiseaseName: ($(this).attr('id')),
+                            MedicineName: ($(this).text()),
+                            Dose: ($(this).attr('data-Dose')),
+                            Meal: ($(this).text('data-Meal')),
+                            QuantityGiver: ($(this).attr('data-Qty')),
+                            Note: ($(this).attr('data-Note')),
+                            Name: name,
+                            Address: address,
+                            CenterCode: centercode,
+                            Center: centername,
+                            District: centerdistrict,
+                        });
+
+                    }
+                });
+            });
+            $.ajax({
+                url: this.action,
+
+                type: "POST",
+                url: "@Url.Action("PatientTreatMent", "CenterOffice")",
+
+                data: JSON.stringify(medClinic),
+                contentType: 'application/json; charset=utf-8',
+                success: function(result) {
+                    //alert(1);
+                    // ...
+                },
+                error: function(request) {
+                    // ...
+                }
+            });
+            return false;
+        });
+
+        $(document).ready(function() {
+            $("#ShowDetails").click(function() {
+                var voterid = $("#VoterId").val();
+                var mydata = { id: voterid };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetVoterFromWebService", "CenterOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ voterid: voterid }),
+                    dataType: "json",
+                    success: function(data) {
+                        $("#Name").val(data.Name);
+                        $("#Address").val(data.Address);
+                        $("#ServiceGiven").val(data.Treatmentcount);
+                        $("#Age").val(data.age);
+                    },
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $("#allshowhistory").click(function() {
+                var voterid = $("#VoterId").val();
+                var mydata = { id: voterid };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetVoterFromWebService", "CenterOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ voterid: voterid }),
+                    dataType: "json",
+                    success: function(data) {
+                        $("#historyName").val(data.Name);
+                        $("#historyAddress").val(data.Address);
+                        $("#historyVoterId").val(data.VoterId);
+
+                    },
+                });
+            });
+        });
+
+
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetDistrict", "CenterOffice")',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                $("#cCode").val(data.CenterCode);
+                $("#cCenter").val(data.Center);
+                $("#cDistrict").val(data.District);
+            },
+        });
+
+        $(document).ready(function() {
+            $("#allshowhistory").click(function() {
+                var Cvoterid = $("#VoterId").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCenter", "CenterOffice")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ Cvoterid: Cvoterid }),
+                    dataType: "json",
+                    success: function(data) {
+                        $('#records_table').empty();
+                        var trHTML = '';
+                        $.each(data, function(i, item) {
+                            trHTML += '<tr><td>' + item.Center + '</td><td>' + item.CenterCode + '</td><td>';
+                        });
+                        $('#records_table').append(trHTML);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+<script src="~/Scripts/tableExport.js"></script>
+<script src="~/Scripts/jquery.base64.js"></script>
+
+<script src="~/Scripts/sprintf.js"></script>
+<script src="~/Scripts/jspdf.js"></script>
+<script src="~/Scripts/base64.js"></script>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+
+    //    $("#myBsdfsdfdfsutton").click(function () {
+    //        $('#myTable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [3, 4] });
+    //    });
+
+
+    //});
+
+    function myPrintFunction() {
+        //alert("Page Load");
+        $('#infotable').tableExport({ type: 'pdf', escape: 'false', ignoreColumn: [4, 5] });
+    }
+    function myPrint() {
+        //alert("Page Load");
+        $('#TreatmentTable').tableExport({ type: 'pdf', escape: 'false',  pdfFontSize: 8 });
+    }
+
+</script>
+}
+
+
+    <script>
+
+            function service() {
+                document.getElementById("ServiceGiven").value = 5;
+            }
+            </script>
